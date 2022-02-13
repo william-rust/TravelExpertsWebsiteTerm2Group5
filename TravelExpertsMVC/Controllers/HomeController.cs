@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using TravelExpertsData.Managers;
 using TravelExpertsMVC.Data;
+using TravelExpertsMVC.Models;
 
 namespace TravelExpertsMVC
 {
@@ -32,30 +33,14 @@ namespace TravelExpertsMVC
         }
 
         // GET: HomeController/Contact
+        // William Rust -- February 13, 2022
         public ActionResult Contact()
         {
-            List<Agent> agents = null;
-            try
-            {
-                agents = AgentManager.GetAgents();
-            }
-            catch (Exception)
-            {
-                TempData["Message"] = "Database connection problem. Try again later.";
-                TempData["IsError"] = true;
-            }
+            ContactViewModel contactView = new ContactViewModel();
+            contactView.Agencies = AgentManager.GetAgencies();
+            contactView.Agents = AgentManager.GetAgents();
 
-            //List<Agency> agencies = null;
-            //try
-            //{
-            //    agencies = AgentManager.GetAgencies();
-            //}
-            //catch (Exception)
-            //{
-            //    TempData["Message"] = "Database connection problem. Try again later.";
-            //    TempData["IsError"] = true;
-            //}
-            return View(agents);
+            return View(contactView);
         }
 
         // GET: HomeController/Packages
@@ -128,13 +113,30 @@ namespace TravelExpertsMVC
         }
 
         // GET: HomeController/Register
-        public ActionResult Register()
+        public IActionResult Register()
         {
-            return View();
+            return View(new Customer());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Customer customer)
+        {
+            try 
+            {
+                // from movies example
+                UserManager.AddCustomer(customer);
+                return RedirectToAction("ThankYou");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
         // GET: HomeController/ThankYou
-        public ActionResult ThankYou()
+        public IActionResult ThankYou(Customer customer)
         {
             return View();
         }
