@@ -46,7 +46,11 @@ namespace TravelExpertsMVC
         // GET: HomeController/Packages
         public ActionResult Packages()
         {
-            return View();
+            //packageView.Products = (IEnumerable<Product>)PackageManager.GetProducts();
+
+            PackageViewModel packageView = new PackageViewModel();
+            packageView.Packages = PackageManager.GetPackages();
+            return View(packageView);
         }
 
         // GET: HomeController/Login

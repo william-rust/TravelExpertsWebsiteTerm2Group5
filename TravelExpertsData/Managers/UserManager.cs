@@ -21,7 +21,7 @@ namespace TravelExpertsData.Managers
 		public static Customer Authenticate(string FirstName,string LastName, string password)
 		{
 			TravelExpertsContext db = new TravelExpertsContext();
-			var user = db.Customers.SingleOrDefault(cust => cust.CustFirstName == FirstName && cust.CustLastName == LastName
+			var user = db.Products.SingleOrDefault(cust => cust.CustFirstName == FirstName && cust.CustLastName == LastName
 			&& cust.CustPassword == password);
 			return user;
 		}
@@ -29,7 +29,7 @@ namespace TravelExpertsData.Managers
 		public static void AddCustomer(Customer customer)
 		{
 			TravelExpertsContext db = new TravelExpertsContext();
-			db.Customers.Add(customer);
+			db.Products.Add(customer);
 			db.SaveChanges();
 		}
 	}

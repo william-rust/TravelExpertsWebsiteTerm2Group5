@@ -24,13 +24,12 @@ namespace TravelExpertsMVC.Data
         public virtual DbSet<BookingDetail> BookingDetails { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Customer> Products { get; set; }
         public virtual DbSet<CustomersReward> CustomersRewards { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Fee> Fees { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
         public virtual DbSet<PackagesProductsSupplier> PackagesProductsSuppliers { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductsSupplier> ProductsSuppliers { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Reward> Rewards { get; set; }

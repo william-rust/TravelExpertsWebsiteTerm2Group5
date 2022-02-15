@@ -1,5 +1,25 @@
 ﻿@section head {
 <script src="~/js/readOrders.js"></script>
+
+@*function validate(){
+        var elements = document.getElementById("orderForm").elements;
+        var form = document.forms[0]
+        var filledFields = 0;
+        var values = []
+        for (var i = 0, element; element = elements[i++];) {
+            values.push(element.value)
+            if (element.value === ""){
+                filledFields++
+            };
+        };
+        if (filledFields != 0){
+            alert(filledFields + " required fields are missing.");
+            return false;
+        }else{
+             return confirm("Confirm and Submit information?");
+        };
+};*@
+
 <meta name="description" content="Order vacation packages in here: for the customers of the Travel Experts agency">
 <title>Place Your Order - Travel Experts</title>
 }
